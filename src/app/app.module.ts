@@ -13,16 +13,16 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import {ContractDetailPage} from "../pages/contract-detail/contract-detail";
+import {ContractInboxPage} from "../pages/contract-inbox/contract-inbox";
 
 @NgModule({
   declarations: [
     MyApp,
-    AboutPage,
-    ContactPage,
     HomePage,
     ProfilePage,
     TabsPage,
-    ContractDetailPage
+    ContractDetailPage,
+    ContractInboxPage
   ],
   imports: [
     BrowserModule,
@@ -31,12 +31,11 @@ import {ContractDetailPage} from "../pages/contract-detail/contract-detail";
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    AboutPage,
-    ContactPage,
     HomePage,
     ProfilePage,
     TabsPage,
-    ContractDetailPage
+    ContractDetailPage,
+    ContractInboxPage
   ],
   providers: [
     StatusBar,

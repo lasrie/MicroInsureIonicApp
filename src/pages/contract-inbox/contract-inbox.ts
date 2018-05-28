@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {IonicPage, NavController, NavParams} from 'ionic-angular';
+import {ContractDetailPage} from "../contract-detail/contract-detail";
 
 /**
  * Generated class for the ContractInboxPage page.
@@ -22,4 +23,10 @@ export class ContractInboxPage {
     console.log('ionViewDidLoad ContractInboxPage');
   }
 
+  itemTapped(event, item) {
+    this.navCtrl.push(ContractDetailPage, {
+      item: item,
+      inbox: true
+    });
+  }
 }

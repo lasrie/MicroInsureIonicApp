@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
-import { ModalController } from 'ionic-angular';
+import {Component} from '@angular/core';
+import {NavController} from 'ionic-angular';
+import {ModalController} from 'ionic-angular';
 import {ContractDetailPage} from "../contract-detail/contract-detail";
 
 @Component({
@@ -20,7 +20,8 @@ export class HomePage {
 
   itemTapped(event, item) {
     this.navCtrl.push(ContractDetailPage, {
-      item: item
+      item: item,
+      inbox: true
     });
   }
 
