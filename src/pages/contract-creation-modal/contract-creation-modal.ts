@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ViewController } from 'ionic-angular';
+import { RestProvider } from '../../providers/rest/rest';
+
 
 /**
  * Generated class for the ContractCreationModalPage page.
@@ -16,8 +18,29 @@ import { ViewController } from 'ionic-angular';
 })
 export class ContractCreationModal {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl : ViewController ) {
+        
+    testContract = {
+              $class: 'org.example.microinsurance.SampleAsset',
+              'assetId': 'aaa',
+              'owner': '111',
+              'value': 'Testvalueaaa'
+            };  
+    
+    
+  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl : ViewController, public restProvider: RestProvider ) {
+    
+      
   }
+    
+    
+    saveContract() {
+      this.restProvider.saveContract(this.testContract).then((result) => {
+        console.log(result);
+      }, (err) => {
+        console.log(err);
+      });
+    }
+    
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ContractCreationModal');
