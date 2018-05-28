@@ -21,7 +21,7 @@ export class HomePage {
   itemTapped(event, item) {
     this.navCtrl.push(ContractDetailPage, {
       item: item,
-      inbox: true
+      inbox: false
     });
   }
 

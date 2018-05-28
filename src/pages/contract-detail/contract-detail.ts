@@ -25,6 +25,7 @@ export class ContractDetailPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad ContractDetailPage');
     console.log(this.id);
+    console.log(this.inbox);
   }
 
 }
