@@ -10,4 +10,5 @@ export class Contract {
   insuredObject: string;
   insurance: string;
   blackbox: string;
+  insuranceSum: number;
 }
