@@ -16,6 +16,12 @@ import { ViewController } from 'ionic-angular';
 })
 export class ContractCreationModal {
 
+  startDate: string;
+  endDate: string;
+  insuranceSum: number;
+  insuranceObject: string;
+  borrowerID: string;
+
   constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl : ViewController ) {
   }
 
