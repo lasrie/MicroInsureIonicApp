@@ -17,14 +17,6 @@
 
   <ion-grid>
 
-    <div ng-repeat="number in numbers">
-
-      <div class="row" ng-if="$even">
-        <div class="col col-50">{{numbers[$index]}}</div>
-        <div class="col col-50">{{numbers[$index + 1]}}</div>
-      </div>
-
-    </div>
     <ion-row>
       <ion-col ngFor="let proposal of proposals">
         <ion-card>

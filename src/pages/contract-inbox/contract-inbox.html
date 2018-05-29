@@ -15,21 +15,23 @@
 
 <ion-content padding>
   <ion-grid>
+
     <ion-row>
-      <ion-col>
-        <ion-card>
+      <ion-col ngFor="let proposal of proposals">
+        <ion-card *ngIf="proposal.lenderID == this.myUserID">
           <ion-item>
-            <h2>Contract 1</h2>
-            <p>ends in 10 mins</p>
+            <h2>{{proposal.description}}</h2>
+            <p></p>
           </ion-item>
 
           <ion-card-content>
-            The British use the term "header", but the American term "head-shot" the English simply refuse to adopt.
+            Starts at {{proposal.beginDate}}, ends at {{proposal.endDate}}.
+            Asset covered has the id {{proposal.objectID}}
           </ion-card-content>
 
           <ion-row>
             <ion-col>
-              <button ion-button icon-left clear small (click)="itemTapped($event, 'c1')">
+              <button ion-button icon-left clear small (click)="itemTapped($event, proposal.contractID)">
                 <div>Details</div>
               </button>
             </ion-col>
@@ -37,6 +39,7 @@
 
         </ion-card>
       </ion-col>
+
     </ion-row>
   </ion-grid>
 </ion-content>

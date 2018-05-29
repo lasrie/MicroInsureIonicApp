@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {ContractDetailPage} from "../contract-detail/contract-detail";
+import {RestProvider} from "../../providers/rest/rest";
 
 /**
  * Generated class for the ContractInboxPage page.
@@ -16,7 +17,10 @@ import {ContractDetailPage} from "../contract-detail/contract-detail";
 })
 export class ContractInboxPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  proposals: any;
+  myUserID= '222';
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public restProvider: RestProvider) {
   }
 
   ionViewDidLoad() {
@@ -28,5 +32,14 @@ export class ContractInboxPage {
       item: item,
       inbox: true
     });
+  }
+
+  loadData(){
+    this.restProvider.getProposals()
+      .then(data => {
+        this.proposals = data;
+        console.log(this.proposals);
+
+      });
   }
 }
