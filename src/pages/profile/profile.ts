@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {RestProvider} from "../../providers/rest/rest";
 
 /**
  * Generated class for the ProfilePage page.
@@ -15,11 +16,24 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ProfilePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  profiles: any;
+  profile: any;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public restProvider: RestProvider) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProfilePage');
+  }
+
+  loadData(){
+    this.restProvider.getProposals()
+      .then(data => {
+        this.profiles = data;
+        console.log(this.profiles);
+
+      });
+
   }
 
 }
