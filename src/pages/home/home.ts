@@ -94,8 +94,7 @@ export class HomePage {
   }];
 
   constructor(public navCtrl: NavController, public modalCtrl: ModalController, public restProvider: RestProvider) {
-
-    console.log(this.contracts);
+    this.loadDataNoRefresher();
   }
 
 
@@ -112,8 +111,23 @@ export class HomePage {
   }
 
   filterData(refresher, data){
-
+      console.log(data);
+      this.contracts = [];
+      for(let obj of data){
+           if(obj.lenderID == "222"){
+              this.contracts.push(obj);
+          }
+      }
     refresher.complete();
+  }
+    filterDataNoRefresher( data){
+      console.log(data);
+      this.contracts = [];
+      for(let obj of data){
+           if(obj.lenderID == "222"){
+              this.contracts.push(obj);
+          }
+      }
   }
 
   loadData(refresher) {
@@ -123,6 +137,16 @@ export class HomePage {
           refresher.complete();
         }else {
           this.filterData(refresher, data);
+        }
+      });
+  }
+    
+    loadDataNoRefresher() {
+    this.restProvider.getContracts()
+      .then(data => {
+        if(data == null){
+        }else {
+          this.filterDataNoRefresher(data);
         }
       });
   }

@@ -18,21 +18,36 @@ import {RestProvider} from '../../providers/rest/rest';
 })
 export class ContractCreationModal {
 
-  proposal =
-    {
+ 
+
+  startDate: string;
+  endDate: string;
+  insuranceSum: number;
+  insuranceObject: string;
+  borrowerID: string;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, public restProvider: RestProvider) {
+
+  }
+
+  createProposal() {
+      let d = new Date();
+      let time = d.getTime();
+      let proposal = 
+         {
       "$class": "org.minsurance.project.Proposal",
       "contract": "resource:org.minsurance.project.Contract#3172",
-      "contractID": "contract333",
-      "beginDate": "2018-05-29T07:27:07.335Z",
-      "endDate": "2018-05-29T07:27:07.335Z",
+      "contractID": time,
+      "beginDate": this.startDate,
+      "endDate": this.endDate,
       "description": "fas",
-      "objectID": "object111",
+      "objectID": this.insuranceSum,
       "lenderID": "222",
-      "borrowerID": "111",
+      "borrowerID": this.borrowerID,
       "insuranceID": "i111",
       "blackBoxID": "black111",
       "price": 500,
-      "insuranceSum": 10,
+      "insuranceSum": this.insuranceSum,
       "futureHolder": {
         "$class": "org.minsurance.project.User",
         "persoNmb": "2705",
@@ -50,53 +65,21 @@ export class ContractCreationModal {
           "country": "Germany"
         }
       }
-    }
-
-  accept =
-    {
-      "$class": "org.minsurance.project.Accept",
-      "contract": "resource:org.minsurance.project.Contract#contract333"
-    }
-
-  report =
-    {
-      "$class": "org.minsurance.project.Report",
-      "contract": "resource:org.minsurance.project.Contract#contract333"
-    }
-
-  startDate: string;
-  endDate: string;
-  insuranceSum: number;
-  insuranceObject: string;
-  borrowerID: string;
-
-  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, public restProvider: RestProvider) {
-
-  }
-
-  createProposal() {
-    this.restProvider.createProposal(this.proposal).then((result) => {
+    
+ 
+      }
+      
+      
+    this.restProvider.createProposal(proposal).then((result) => {
       console.log(result);
     }, (err) => {
       console.log(err);
     });
   }
 
-  acceptProposal() {
-    this.restProvider.acceptProposal(this.accept).then((result) => {
-      console.log(result);
-    }, (err) => {
-      console.log(err);
-    });
-  }
+ 
 
-  reportContract() {
-    this.restProvider.reportContract(this.report).then((result) => {
-      console.log(result);
-    }, (err) => {
-      console.log(err);
-    });
-  }
+  
 
 
   ionViewDidLoad() {
