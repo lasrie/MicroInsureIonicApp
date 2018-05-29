@@ -19,9 +19,9 @@ apiUrl = 'http://localhost:3000';
   }
     
     
-    getUsers() {
+    getLenders() {
       return new Promise(resolve => {
-        this.http.get(this.apiUrl+'/api/SampleParticipant').subscribe(data => {
+        this.http.get(this.apiUrl+'/api/Lender').subscribe(data => {
           resolve(data);
         }, err => {
           console.log(err);
@@ -29,9 +29,9 @@ apiUrl = 'http://localhost:3000';
       });
     }
     
-    getContracts() {
+    getBorrowers() {
       return new Promise(resolve => {
-        this.http.get(this.apiUrl+'/api/SampleAsset').subscribe(data => {
+        this.http.get(this.apiUrl+'/api/Borrower').subscribe(data => {
           resolve(data);
         }, err => {
           console.log(err);
@@ -40,9 +40,72 @@ apiUrl = 'http://localhost:3000';
     }
     
     
-    saveContract(data) {
+    getBlackbox() {
+      return new Promise(resolve => {
+        this.http.get(this.apiUrl+'/api/Blackbox').subscribe(data => {
+          resolve(data);
+        }, err => {
+          console.log(err);
+        });
+      });
+    }
+    
+    getProposals() {
+      return new Promise(resolve => {
+        this.http.get(this.apiUrl+'/api/Proposal').subscribe(data => {
+          resolve(data);
+        }, err => {
+          console.log(err);
+        });
+      });
+    }
+    
+    getAccepts() {
+      return new Promise(resolve => {
+        this.http.get(this.apiUrl+'/api/Accept').subscribe(data => {
+          resolve(data);
+        }, err => {
+          console.log(err);
+        });
+      });
+    }
+    
+    getReports() {
+      return new Promise(resolve => {
+        this.http.get(this.apiUrl+'/api/Report').subscribe(data => {
+          resolve(data);
+        }, err => {
+          console.log(err);
+        });
+      });
+    }
+    
+    
+    createProposal(data) {
       return new Promise((resolve, reject) => {
-        this.http.post(this.apiUrl+'/api/SampleAsset', data)
+        this.http.post(this.apiUrl+'/api/Proposal', data)
+          .subscribe(res => {
+            resolve(res);
+          }, (err) => {
+            reject(err);
+          });
+      });
+    }
+    
+    acceptProposal(data) {
+      return new Promise((resolve, reject) => {
+        this.http.post(this.apiUrl+'/api/Accept', data)
+          .subscribe(res => {
+            resolve(res);
+          }, (err) => {
+            reject(err);
+          });
+      });
+    }
+    
+    reportContract(data) {
+      return new Promise((resolve, reject) => {
+        this.http.post(this.apiUrl+'/api/Report', data)
           .subscribe(res => {
             resolve(res);
           }, (err) => {

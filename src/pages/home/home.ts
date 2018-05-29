@@ -15,23 +15,61 @@ export class HomePage {
     
   constructor(public navCtrl: NavController, public modalCtrl: ModalController, public restProvider: RestProvider) {
     
-      console.log(this.getUsers());
-      console.log(this.getContracts());
+      console.log(this.getLenders());
+      console.log(this.getBorrowers());
+      console.log(this.getBlackbox());
+      console.log(this.getProposals());
+      console.log(this.getAccepts());
+      console.log(this.getReports());
+
+
 
  
   }
     
     
-    getUsers() {
-        this.restProvider.getUsers()
+    getLenders() {
+        this.restProvider.getLenders()
         .then(data => {
           this.users = data;
           console.log(this.users);
         });
       }
     
-    getContracts() {
-        this.restProvider.getContracts()
+    getBorrowers() {
+        this.restProvider.getBorrowers()
+        .then(data => {
+          this.users = data;
+          console.log(this.users);
+        });
+      }
+    
+    getBlackbox() {
+        this.restProvider.getBlackbox()
+        .then(data => {
+          this.users = data;
+          console.log(this.users);
+        });
+      }
+    
+    getProposals() {
+        this.restProvider.getProposals()
+        .then(data => {
+          this.users = data;
+          console.log(this.users);
+        });
+      }
+    
+    getAccepts() {
+        this.restProvider.getAccepts()
+        .then(data => {
+          this.users = data;
+          console.log(this.users);
+        });
+      }
+    
+    getReports() {
+        this.restProvider.getReports()
         .then(data => {
           this.users = data;
           console.log(this.users);
