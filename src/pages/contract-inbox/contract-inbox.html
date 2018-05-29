@@ -17,21 +17,21 @@
   <ion-grid>
 
     <ion-row>
-      <ion-col ngFor="let proposal of proposals">
-        <ion-card *ngIf="proposal.lenderID == this.myUserID">
+      <ion-col *ngFor="let contract of contracts">
+        <ion-card>
           <ion-item>
-            <h2>{{proposal.description}}</h2>
-            <p></p>
+            <h2>{{contract.description}}</h2>
+            <p>{{contract.status}}</p>
           </ion-item>
 
           <ion-card-content>
-            Starts at {{proposal.beginDate}}, ends at {{proposal.endDate}}.
-            Asset covered has the id {{proposal.objectID}}
+            Starts at {{contract.beginDate}}, ends at {{contract.endDate}}.
+            Asset covered has the id {{contract.objectID}}
           </ion-card-content>
 
           <ion-row>
             <ion-col>
-              <button ion-button icon-left clear small (click)="itemTapped($event, proposal.contractID)">
+              <button ion-button icon-left clear small (click)="itemTapped($event, contract.contractID)">
                 <div>Details</div>
               </button>
             </ion-col>
@@ -41,5 +41,7 @@
       </ion-col>
 
     </ion-row>
+
+
   </ion-grid>
 </ion-content>
