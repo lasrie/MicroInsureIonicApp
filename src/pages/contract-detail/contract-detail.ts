@@ -98,5 +98,6 @@ export class ContractDetailPage {
 
   loadDataIncident(event){
       this.showIncident = true;
+      event.complete();
   }
 }
