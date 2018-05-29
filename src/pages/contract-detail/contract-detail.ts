@@ -25,11 +25,24 @@ export class ContractDetailPage {
   user: any = {};
   incident: any = {};
   insuredObject: any = {};
+    
+     accept =
+    {
+      "$class": "org.minsurance.project.Accept",
+      "contract": "resource:org.minsurance.project.Contract#contract333"
+    }
+
+  report =
+    {
+      "$class": "org.minsurance.project.Report",
+      "contract": "resource:org.minsurance.project.Contract#"
+    }
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public restProvider: RestProvider) {
     this.id = this.navParams.get("item");
     this.inbox = this.navParams.get("inbox");
+      this.loadData();
   }
 
   ionViewDidLoad() {
@@ -40,17 +53,45 @@ export class ContractDetailPage {
 
   loadData() {
 
-    this.restProvider.getProposals()
+    this.restProvider.getContracts()
       .then(data => {
-        this.contracts = data;
-        console.log(this.contracts);
+        this.filterData(data);
 
       });
-
-    this.restProvider.getBlackbox()
-      .then(data => {
-        this.incident = data;
-        console.log(this.incident);
-      });
+  }
+    
+    filterData(data){
+        this.contract = {};
+      for(let obj of data){
+           if(obj.contractID == this.id){
+              this.contract = obj;
+               console.log(this.contract);
+          }
+      }
+    }
+    
+     acceptProposal() {
+       let accept = {
+      "$class": "org.minsurance.project.Accept",
+      "contract": "resource:org.minsurance.project.Contract#" + this.contract.contractID
+    }
+    this.restProvider.acceptProposal(accept).then((result) => {
+      console.log(result);
+    }, (err) => {
+      console.log(err);
+    });
+  }
+    
+    reportContract() {
+    let    report =
+    {
+      "$class": "org.minsurance.project.Report",
+      "contract": "resource:org.minsurance.project.Contract#" + this.contract.contractID
+    }
+    this.restProvider.reportContract(report).then((result) => {
+      console.log(result);
+    }, (err) => {
+      console.log(err);
+    });
   }
 }

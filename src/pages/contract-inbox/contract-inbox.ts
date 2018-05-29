@@ -102,7 +102,9 @@ export class ContractInboxPage {
   }];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public restProvider: RestProvider) {
+      this.loadDataNoRefresher();
   }
+
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ContractInboxPage');
@@ -115,8 +117,14 @@ export class ContractInboxPage {
     });
   }
 
-  filterData(refresher, data) {
-
+  filterData(refresher, data){
+      console.log(data);
+      this.proposals = [];
+      for(let obj of data){
+           if(obj.borrowerID == "111"  && obj.status == "proposed"){
+              this.proposals.push(obj);
+          }
+      }
     refresher.complete();
   }
 
@@ -129,5 +137,25 @@ export class ContractInboxPage {
           this.filterData(refresher, data);
         }
       });
+  }
+    
+     loadDataNoRefresher() {
+    this.restProvider.getContracts()
+      .then(data => {
+        if(data == null){
+        }else {
+          this.filterDataNoRefresher(data);
+        }
+      });
+  }
+    
+    filterDataNoRefresher( data){
+      console.log(data);
+     this.proposals = [];
+      for(let obj of data){
+           if(obj.borrowerID == "111" && obj.status == "proposed" ){
+              this.proposals.push(obj);
+          }
+      }
   }
 }

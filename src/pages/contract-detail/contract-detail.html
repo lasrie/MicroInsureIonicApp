@@ -82,8 +82,7 @@
   </ion-card>
 
   <div id="inboxBtns" *ngIf="inbox">
-    <button ion-button color="secondary" full>Accept</button>
-    <button ion-button color="danger" full>Reject</button>
+    <button ion-button color="secondary" (click)="acceptProposal()" full>Accept</button>
   </div>
 
 </ion-content>
