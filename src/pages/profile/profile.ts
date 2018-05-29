@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {Component} from '@angular/core';
+import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {RestProvider} from "../../providers/rest/rest";
 
 /**
@@ -16,8 +16,8 @@ import {RestProvider} from "../../providers/rest/rest";
 })
 export class ProfilePage {
 
-  profiles: any;
-  profile: any;
+  profiles: any = {};
+  profile: any = {};
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public restProvider: RestProvider) {
   }
@@ -26,7 +26,7 @@ export class ProfilePage {
     console.log('ionViewDidLoad ProfilePage');
   }
 
-  loadData(){
+  loadData() {
     this.restProvider.getProposals()
       .then(data => {
         this.profiles = data;

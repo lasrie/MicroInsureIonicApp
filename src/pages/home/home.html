@@ -11,44 +11,23 @@
 
 
 <ion-content padding>
-  <h2>Welcome to MicroInsure!</h2>
+
+  <ion-refresher (ionRefresh)="loadData($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <h2>Welcome to QuickInsurance!</h2>
   <p>Have a look at your contracts!</p>
 
 
   <ion-grid>
 
     <ion-row>
-      <ion-col ngFor="let proposal of proposals">
-        <ion-card>
-          <ion-item>
-            <h2>{{proposal.description}}</h2>
-            <p></p>
-          </ion-item>
-
-          <ion-card-content>
-            Starts at {{proposal.beginDate}}, ends at {{proposal.endDate}}.
-            Asset covered has the id {{proposal.objectID}}
-          </ion-card-content>
-
-          <ion-row>
-            <ion-col>
-              <button ion-button icon-left clear small (click)="itemTapped($event, proposal.contractID)">
-                <div>Details</div>
-              </button>
-            </ion-col>
-          </ion-row>
-
-        </ion-card>
-      </ion-col>
-
-    </ion-row>
-
-    <ion-row>
-      <ion-col ngFor="let contract of accepts">
+      <ion-col *ngFor="let contract of contracts">
         <ion-card>
           <ion-item>
             <h2>{{contract.description}}</h2>
-            <p>Accepted</p>
+            <p>{{contract.status}}</p>
           </ion-item>
 
           <ion-card-content>
@@ -69,31 +48,6 @@
 
     </ion-row>
 
-    <ion-row>
-      <ion-col ngFor="let contract of reports">
-        <ion-card>
-          <ion-item>
-            <h2>{{contract.description}}</h2>
-            <p>Accepted</p>
-          </ion-item>
-
-          <ion-card-content>
-            Starts at {{contract.beginDate}}, ends at {{contract.endDate}}.
-            Asset covered has the id {{contract.objectID}}
-          </ion-card-content>
-
-          <ion-row>
-            <ion-col>
-              <button ion-button icon-left clear small (click)="itemTapped($event, contract.contractID)">
-                <div>Details</div>
-              </button>
-            </ion-col>
-          </ion-row>
-
-        </ion-card>
-      </ion-col>
-
-    </ion-row>
 
   </ion-grid>
 </ion-content>

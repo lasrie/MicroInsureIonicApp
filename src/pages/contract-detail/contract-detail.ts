@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {Component} from '@angular/core';
+import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {RestProvider} from "../../providers/rest/rest";
 
 /**
@@ -18,13 +18,13 @@ export class ContractDetailPage {
   id: string;
   inbox: boolean;
 
-  contracts: any;
-  contract: any;
-  blackbox: any;
-  insurer: any;
-  user: any;
-  incident: any;
-  insuredObject: any;
+  contracts: any = {};
+  contract: any = {};
+  blackbox: any = {};
+  insurer: any = {};
+  user: any = {};
+  incident: any = {};
+  insuredObject: any = {};
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public restProvider: RestProvider) {
@@ -38,7 +38,7 @@ export class ContractDetailPage {
     console.log(this.inbox);
   }
 
-  loadData(){
+  loadData() {
 
     this.restProvider.getProposals()
       .then(data => {

@@ -13,12 +13,22 @@ export class RestProvider {
 
 apiUrl = 'http://localhost:3000';
 
-    
+
   constructor(public http: HttpClient) {
     console.log('Hello RestProvider Provider');
   }
-    
-    
+
+  getContracts() {
+    return new Promise(resolve => {
+      this.http.get(this.apiUrl+'/api/Contract').subscribe(data => {
+        resolve(data);
+      }, err => {
+        resolve();
+        console.log(err);
+      });
+    });
+  }
+
     getLenders() {
       return new Promise(resolve => {
         this.http.get(this.apiUrl+'/api/Lender').subscribe(data => {
@@ -28,7 +38,7 @@ apiUrl = 'http://localhost:3000';
         });
       });
     }
-    
+
     getBorrowers() {
       return new Promise(resolve => {
         this.http.get(this.apiUrl+'/api/Borrower').subscribe(data => {
@@ -38,8 +48,8 @@ apiUrl = 'http://localhost:3000';
         });
       });
     }
-    
-    
+
+
     getBlackbox() {
       return new Promise(resolve => {
         this.http.get(this.apiUrl+'/api/Blackbox').subscribe(data => {
@@ -49,7 +59,7 @@ apiUrl = 'http://localhost:3000';
         });
       });
     }
-    
+
     getProposals() {
       return new Promise(resolve => {
         this.http.get(this.apiUrl+'/api/Proposal').subscribe(data => {
@@ -59,7 +69,7 @@ apiUrl = 'http://localhost:3000';
         });
       });
     }
-    
+
     getAccepts() {
       return new Promise(resolve => {
         this.http.get(this.apiUrl+'/api/Accept').subscribe(data => {
@@ -69,7 +79,7 @@ apiUrl = 'http://localhost:3000';
         });
       });
     }
-    
+
     getReports() {
       return new Promise(resolve => {
         this.http.get(this.apiUrl+'/api/Report').subscribe(data => {
@@ -79,8 +89,8 @@ apiUrl = 'http://localhost:3000';
         });
       });
     }
-    
-    
+
+
     createProposal(data) {
       return new Promise((resolve, reject) => {
         this.http.post(this.apiUrl+'/api/Proposal', data)
@@ -91,7 +101,7 @@ apiUrl = 'http://localhost:3000';
           });
       });
     }
-    
+
     acceptProposal(data) {
       return new Promise((resolve, reject) => {
         this.http.post(this.apiUrl+'/api/Accept', data)
@@ -102,7 +112,7 @@ apiUrl = 'http://localhost:3000';
           });
       });
     }
-    
+
     reportContract(data) {
       return new Promise((resolve, reject) => {
         this.http.post(this.apiUrl+'/api/Report', data)
@@ -113,9 +123,9 @@ apiUrl = 'http://localhost:3000';
           });
       });
     }
-    
-    
-    
+
+
+
     //needHeaders?
 //    this.http.post(this.apiUrl+'/users', JSON.stringify(data), {
 //        headers: new HttpHeaders().set('Authorization', 'my-auth-token'),
