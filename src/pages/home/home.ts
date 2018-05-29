@@ -11,10 +11,13 @@ import { RestProvider } from '../../providers/rest/rest';
 })
 export class HomePage {
 
-  users: any;    
-    
+  users: any;
+  proposals: any;
+  accepts: any;
+  reports: any;
+
   constructor(public navCtrl: NavController, public modalCtrl: ModalController, public restProvider: RestProvider) {
-    
+
       console.log(this.getLenders());
       console.log(this.getBorrowers());
       console.log(this.getBlackbox());
@@ -24,10 +27,10 @@ export class HomePage {
 
 
 
- 
+
   }
-    
-    
+
+
     getLenders() {
         this.restProvider.getLenders()
         .then(data => {
@@ -35,7 +38,7 @@ export class HomePage {
           console.log(this.users);
         });
       }
-    
+
     getBorrowers() {
         this.restProvider.getBorrowers()
         .then(data => {
@@ -43,7 +46,7 @@ export class HomePage {
           console.log(this.users);
         });
       }
-    
+
     getBlackbox() {
         this.restProvider.getBlackbox()
         .then(data => {
@@ -51,7 +54,7 @@ export class HomePage {
           console.log(this.users);
         });
       }
-    
+
     getProposals() {
         this.restProvider.getProposals()
         .then(data => {
@@ -59,7 +62,7 @@ export class HomePage {
           console.log(this.users);
         });
       }
-    
+
     getAccepts() {
         this.restProvider.getAccepts()
         .then(data => {
@@ -67,7 +70,7 @@ export class HomePage {
           console.log(this.users);
         });
       }
-    
+
     getReports() {
         this.restProvider.getReports()
         .then(data => {
@@ -76,7 +79,7 @@ export class HomePage {
         });
       }
 
-    
+
   openModal() {
     let modalPage = this.modalCtrl.create('ContractCreationModal');
     modalPage.present();
@@ -87,6 +90,25 @@ export class HomePage {
       item: item,
       inbox: false
     });
+  }
+
+  loadData(){
+    this.restProvider.getProposals()
+      .then(data => {
+        this.proposals = data;
+        console.log(this.proposals);
+
+      });
+    this.restProvider.getAccepts()
+      .then(data => {
+        this.accepts = data;
+        console.log(this.accepts);
+      });
+    this.restProvider.getReports()
+      .then(data => {
+        this.reports = data;
+        console.log(this.users);
+      });
   }
 
 }

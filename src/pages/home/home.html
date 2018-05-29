@@ -13,22 +13,34 @@
 <ion-content padding>
   <h2>Welcome to MicroInsure!</h2>
   <p>Have a look at your contracts!</p>
+
+
   <ion-grid>
+
+    <div ng-repeat="number in numbers">
+
+      <div class="row" ng-if="$even">
+        <div class="col col-50">{{numbers[$index]}}</div>
+        <div class="col col-50">{{numbers[$index + 1]}}</div>
+      </div>
+
+    </div>
     <ion-row>
-      <ion-col >
+      <ion-col ngFor="let proposal of proposals">
         <ion-card>
           <ion-item>
-            <h2>Contract 1</h2>
-            <p>ends in 10 mins</p>
+            <h2>{{proposal.description}}</h2>
+            <p></p>
           </ion-item>
 
           <ion-card-content>
-            The British use the term "header", but the American term "head-shot" the English simply refuse to adopt.
+            Starts at {{proposal.beginDate}}, ends at {{proposal.endDate}}.
+            Asset covered has the id {{proposal.objectID}}
           </ion-card-content>
 
           <ion-row>
             <ion-col>
-              <button ion-button icon-left clear small (click)="itemTapped($event, 'c1')">
+              <button ion-button icon-left clear small (click)="itemTapped($event, proposal.contractID)">
                 <div>Details</div>
               </button>
             </ion-col>
@@ -36,43 +48,25 @@
 
         </ion-card>
       </ion-col>
-      <ion-col >
-        <ion-card>
-          <ion-item>
-            <h2>Contract 2</h2>
-            <p>ends in 10 mins</p>
-          </ion-item>
 
-          <ion-card-content>
-            The British use the term "header", but the American term "head-shot" the English simply refuse to adopt.
-          </ion-card-content>
-
-          <ion-row>
-            <ion-col>
-              <button ion-button icon-left clear small (click)="itemTapped($event, 'c2')">
-                <div>Details</div>
-              </button>
-            </ion-col>
-          </ion-row>
-
-        </ion-card>
-      </ion-col>
     </ion-row>
+
     <ion-row>
-      <ion-col >
+      <ion-col ngFor="let contract of accepts">
         <ion-card>
           <ion-item>
-            <h2>Contract 1</h2>
-            <p>ends in 10 mins</p>
+            <h2>{{contract.description}}</h2>
+            <p>Accepted</p>
           </ion-item>
 
           <ion-card-content>
-            The British use the term "header", but the American term "head-shot" the English simply refuse to adopt.
+            Starts at {{contract.beginDate}}, ends at {{contract.endDate}}.
+            Asset covered has the id {{contract.objectID}}
           </ion-card-content>
 
           <ion-row>
             <ion-col>
-              <button ion-button icon-left clear small (click)="itemTapped($event, 'c2')">
+              <button ion-button icon-left clear small (click)="itemTapped($event, contract.contractID)">
                 <div>Details</div>
               </button>
             </ion-col>
@@ -80,27 +74,34 @@
 
         </ion-card>
       </ion-col>
-      <ion-col >
-        <ion-card>
-          <ion-item>
-            <h2>Contract 2</h2>
-            <p>ends in 10 mins</p>
-          </ion-item>
 
-          <ion-card-content>
-            The British use the term "header", but the American term "head-shot" the English simply refuse to adopt.
-          </ion-card-content>
-
-          <ion-row>
-            <ion-col>
-              <button ion-button icon-left clear small (click)="itemTapped($event, 'c2')">
-                <div>Details</div>
-              </button>
-            </ion-col>
-          </ion-row>
-
-        </ion-card>
-      </ion-col>
     </ion-row>
+
+    <ion-row>
+      <ion-col ngFor="let contract of reports">
+        <ion-card>
+          <ion-item>
+            <h2>{{contract.description}}</h2>
+            <p>Accepted</p>
+          </ion-item>
+
+          <ion-card-content>
+            Starts at {{contract.beginDate}}, ends at {{contract.endDate}}.
+            Asset covered has the id {{contract.objectID}}
+          </ion-card-content>
+
+          <ion-row>
+            <ion-col>
+              <button ion-button icon-left clear small (click)="itemTapped($event, contract.contractID)">
+                <div>Details</div>
+              </button>
+            </ion-col>
+          </ion-row>
+
+        </ion-card>
+      </ion-col>
+
+    </ion-row>
+
   </ion-grid>
 </ion-content>
