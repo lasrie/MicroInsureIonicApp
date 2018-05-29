@@ -115,10 +115,19 @@ export class ContractInboxPage {
     });
   }
 
-  loadData() {
+  filterData(refresher, data) {
+
+    refresher.complete();
+  }
+
+  loadData(refresher) {
     this.restProvider.getContracts()
       .then(data => {
-
+        if (data == null) {
+          refresher.complete();
+        } else {
+          this.filterData(refresher, data);
+        }
       });
   }
 }

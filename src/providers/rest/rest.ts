@@ -23,6 +23,7 @@ apiUrl = 'http://localhost:3000';
       this.http.get(this.apiUrl+'/api/Contract').subscribe(data => {
         resolve(data);
       }, err => {
+        resolve();
         console.log(err);
       });
     });

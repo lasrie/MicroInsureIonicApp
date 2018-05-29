@@ -111,11 +111,19 @@ export class HomePage {
     });
   }
 
-  loadData() {
+  filterData(refresher, data){
+
+    refresher.complete();
+  }
+
+  loadData(refresher) {
     this.restProvider.getContracts()
       .then(data => {
-        console.log(data);
-
+        if(data == null){
+          refresher.complete();
+        }else {
+          this.filterData(refresher, data);
+        }
       });
   }
 
