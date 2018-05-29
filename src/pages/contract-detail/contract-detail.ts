@@ -24,8 +24,9 @@ export class ContractDetailPage {
   insurer: any = {};
   user: any = {};
   incident: any = {};
+  showIncident = false;
   insuredObject: any = {};
-    
+
      accept =
     {
       "$class": "org.minsurance.project.Accept",
@@ -59,7 +60,7 @@ export class ContractDetailPage {
 
       });
   }
-    
+
     filterData(data){
         this.contract = {};
       for(let obj of data){
@@ -69,7 +70,7 @@ export class ContractDetailPage {
           }
       }
     }
-    
+
      acceptProposal() {
        let accept = {
       "$class": "org.minsurance.project.Accept",
@@ -81,7 +82,7 @@ export class ContractDetailPage {
       console.log(err);
     });
   }
-    
+
     reportContract() {
     let    report =
     {
@@ -93,5 +94,9 @@ export class ContractDetailPage {
     }, (err) => {
       console.log(err);
     });
+  }
+
+  loadDataIncident(event){
+      this.showIncident = true;
   }
 }

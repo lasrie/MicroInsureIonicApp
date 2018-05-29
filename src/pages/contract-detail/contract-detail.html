@@ -14,6 +14,10 @@
 
 
 <ion-content padding>
+  <ion-refresher (ionRefresh)="loadDataIncident($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
   <ion-card>
     <ion-card-header>
       General Info
@@ -75,6 +79,26 @@
       <ion-item>
         <p>Blackbox Status</p>
         Online
+      </ion-item>
+
+    </ion-list>
+
+  </ion-card>
+
+  <ion-card *ngIf="showIncident">
+    <ion-card-header>
+      Incident
+    </ion-card-header>
+    <ion-list>
+
+      <ion-item>
+        <p>Blackbox ID</p>
+        259
+      </ion-item>
+
+      <ion-item>
+        <p>Incident Type</p>
+        Distance Sensor
       </ion-item>
 
     </ion-list>
