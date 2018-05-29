@@ -7,12 +7,83 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>ContractDetail</ion-title>
+    <ion-title>Contract Details ID: {{id}}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+  <ion-card>
+    <ion-card-header>
+      General Info
+    </ion-card-header>
+
+    <ion-list>
+      <ion-item>
+        <p>Start Date</p>
+        21.02.2012 05:00
+      </ion-item>
+
+      <ion-item>
+        <p>End Date</p>
+        21.02.2012 09:00
+      </ion-item>
+
+      <ion-item>
+        <p>Status</p>
+        <b>Pending</b>
+      </ion-item>
+
+      <ion-item>
+        <p>Price</p>
+        5€
+      </ion-item>
+
+      <ion-item>
+        <p>Borrower</p>
+        <ion-card>
+          <ion-item>
+            <ion-avatar item-start>
+              <img src="img/marty-avatar.png">
+            </ion-avatar>
+            <h2>Marty McFly</h2>
+            <p>November 5, 1955</p>
+            <ion-icon name="call" item-end></ion-icon>
+          </ion-item>
+        </ion-card>
+      </ion-item>
+
+      <ion-item>
+        <p>Insurance Provider</p>
+        Allianz SE
+      </ion-item>
+    </ion-list>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      Blackbox Info
+    </ion-card-header>
+    <ion-list>
+
+      <ion-item>
+        <p>Blackbox ID</p>
+        259
+      </ion-item>
+
+      <ion-item>
+        <p>Blackbox Status</p>
+        Online
+      </ion-item>
+
+    </ion-list>
+
+  </ion-card>
+
+  <div id="inboxBtns" *ngIf="inbox">
+    <button ion-button color="secondary" full>Accept</button>
+    <button ion-button color="danger" full>Reject</button>
+  </div>
 
 </ion-content>

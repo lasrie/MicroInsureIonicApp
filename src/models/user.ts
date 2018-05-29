@@ -5,5 +5,8 @@ export class User {
   id: string;
   firstName: string;
   lastName: string;
-  avatar: string;
+  avatarURL: string;
+  phoneNumber: string;
+  birthDate: string;
+  address: string;
 }

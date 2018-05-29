@@ -6,4 +6,6 @@ export class InsuredObject {
   title: string;
   description: string;
   properties: Map<string, string>;
+  objectID: string;
+  ownerID: string;
 }

@@ -15,14 +15,17 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ContractDetailPage {
   id: string;
+  inbox: boolean;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.id = this.navParams.get("item");
+    this.inbox = this.navParams.get("inbox");
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ContractDetailPage');
     console.log(this.id);
+    console.log(this.inbox);
   }
 
 }

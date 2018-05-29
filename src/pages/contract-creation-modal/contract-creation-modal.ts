@@ -67,6 +67,13 @@ export class ContractCreationModal {
   constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl : ViewController, public restProvider: RestProvider ) {
     
       
+  startDate: string;
+  endDate: string;
+  insuranceSum: number;
+  insuranceObject: string;
+  borrowerID: string;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl : ViewController ) {
   }
     
     

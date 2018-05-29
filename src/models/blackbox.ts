@@ -7,4 +7,6 @@ export class Blackbox {
   hasAccelerometer: boolean;
   hasGyroscope: boolean;
   hasGPS: boolean;
+  name: string;
+  description: string;
 }

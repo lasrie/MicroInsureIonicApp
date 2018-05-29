@@ -7,9 +7,12 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>ModalPage</ion-title>
-    <ion-buttons end>
+    <ion-buttons start>
       <button ion-button (click)="closeModal()">Close</button>
+    </ion-buttons>
+    <ion-title>Create New Contract</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="closeModal()">Create</button>
     </ion-buttons>
   </ion-navbar>
 
@@ -29,5 +32,42 @@
     <ion-buttons end>
       <button ion-button (click)="reportContract()">reportContract</button>
     </ion-buttons>
+  <ion-list>
+
+    <ion-item><p>When do you need the insurance?</p></ion-item>
+    <ion-item>
+      <ion-label>Start Date</ion-label>
+      <ion-datetime displayFormat="MM/DD/YYYY HH" [(ngModel)]="startDate"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label>End Date</ion-label>
+      <ion-datetime displayFormat="MM/DD/YYYY HH" [(ngModel)]="endDate"></ion-datetime>
+    </ion-item>
+
+
+    <ion-item><p>What kind of insurance do you need?</p></ion-item>
+    <ion-item>
+      <ion-label color="primary">Insurance Sum</ion-label>
+      <ion-input type="number" [(ngModel)]="insuranceSum"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Object to Insure</ion-label>
+      <ion-select [(ngModel)]="insuranceObject">
+        <ion-option>Bacon</ion-option>
+        <ion-option>Black Olives</ion-option>
+        <ion-option>Extra Cheese</ion-option>
+        <ion-option>Mushrooms</ion-option>
+        <ion-option>Pepperoni</ion-option>
+        <ion-option>Sausage</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item><p>Who will borrow the car?</p></ion-item>
+    <ion-item>
+      <ion-label color="primary">ID of Borrower</ion-label>
+      <ion-input type="email" [(ngModel)]="borrowerID"></ion-input>
+    </ion-item>
+  </ion-list>
+
 
 </ion-content>
